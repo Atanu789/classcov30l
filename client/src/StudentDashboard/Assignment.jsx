@@ -5,7 +5,7 @@ function Assignments() {
   const [isHovered, setIsHovered] = useState(false);
 
   const cardStyle = {
-    background: '#2f2f2f',
+    background: '#06484A',
     color: '#fff',
     borderRadius: '6px',
     padding: '10px', // Reduced padding
