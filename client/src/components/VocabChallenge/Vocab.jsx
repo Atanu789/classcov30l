@@ -79,7 +79,7 @@ function App() {
   <h1 className='flex justify-center text-4xl font-bold p-5 '>Vocab Challenge</h1>
   {wordData.map((item, index) => (
     <div key={index} className="word-description flex justify-center" style={{
-      backgroundColor: '#333',
+      backgroundColor: '#064B4D',
       color: '#fff',
       padding: '40px', 
       margin: '150px',

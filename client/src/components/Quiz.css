@@ -1,7 +1,7 @@
 .container {
   margin: auto;
   margin-top: 40px;
-  background: #2d2d2d; /* Dark background color */
+  background: #0a7e8058; /* Dark background color */
   color: #ffffff; /* Text color for dark theme */
   display: flex;
   flex-direction: column;

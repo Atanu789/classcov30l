@@ -49,7 +49,7 @@ function NoteSection() {
       <h2 className="text-3xl font-bold mb-6 dark:text-white">Note Section</h2>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <div>
-          <div className="bg-green-900 p-6 rounded-lg">
+        <div className="bg-green-900 p-6 rounded-lg" style={{ backgroundColor: '#0A7E80' }}>
             <h3 className="text-xl font-semibold mb-4">Add New Note</h3>
             <textarea
               type="text"

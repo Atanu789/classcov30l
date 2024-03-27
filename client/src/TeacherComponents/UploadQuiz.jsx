@@ -49,8 +49,8 @@ const QuizUpload = () => {
     };
 
     return (
-        <div className="flex flex-col items-center justify-center min-h-screen bg-[#202020]">
-            <form onSubmit={handleSubmit} className="w-full max-w-lg p-8 space-y-4 bg-black rounded shadow">
+        <div className="flex flex-col items-center justify-center min-h-screen bg-[#202020]" >
+            <form onSubmit={handleSubmit} className="w-full max-w-lg p-8 space-y-4 bg-[#096669] rounded shadow">
                 <h2 className="text-xl font-bold">Upload Quiz Question</h2>
                 <div>
                     <label className="block text-sm font-medium text-gray-100">Question</label>
