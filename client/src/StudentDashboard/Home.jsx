@@ -17,7 +17,7 @@ function Home() {
     { name: 'Quiz', Performance: 30 },
   ];
 
-useEffect(() => {
+  useEffect(() => {
     fetch('http://localhost:8000/api/v1/students/getAssignments')
       .then((response) => response.json())
       .then((data) => {
@@ -29,8 +29,6 @@ useEffect(() => {
       })
       .catch((error) => console.error('Error fetching assignments:', error));
   }, []);
-
-
 
   const divStyle = {
     height: '170px',

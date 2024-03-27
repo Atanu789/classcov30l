@@ -2,7 +2,7 @@ import { useRef, useState, useEffect, createRef } from 'react';
 import './Quiz.css';
 import correctSound from "../assets/7_Crore.mp3";
 import wrongSound from "../assets/Ayein.mp3";
-import bgmSound from "../assets/bgm.mp3"; 
+import bgmSound from "../assets/husn.mp3"; 
 
 function Quiz() {
   const [quizData, setQuizData] = useState([]);
@@ -14,7 +14,7 @@ function Quiz() {
   const[correct,setCorrect]=useState(0);
   const[wrong,setWrong]=useState(0);
   const[totalquestions,settotalQuestions]=useState([]);
-  const [timer, setTimer] = useState(10); 
+  const [timer, setTimer] = useState(30); 
   const correctAudio = useRef(null);
   const wrongAudio = useRef(null);
   const bgmAudio = useRef(null); // Ref for the background sound
