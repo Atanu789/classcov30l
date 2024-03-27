@@ -69,10 +69,10 @@ export default function Component() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 py-10 px-4">
+    <div className="min-h-screen bg-[#161616] py-10 px-4">
       <div className="max-w-6xl mx-auto">
         <div className="grid md:grid-cols-2 gap-10">
-          <div className="bg-white shadow-lg rounded-lg p-6">
+          <div className="bg-[#313131] shadow-lg rounded-lg p-6 mt-16">
             <h2 className="text-2xl font-bold text-center mb-4">Student Sign Up</h2>
             {studentError && <p className="text-red-500 text-center">{studentError}</p>}
             <form onSubmit={createStudent} className="space-y-4">
@@ -129,7 +129,7 @@ export default function Component() {
             </form>
           </div>
 
-          <div className="bg-white shadow-lg rounded-lg p-6">
+          <div className=" bg-[#313131] shadow-lg rounded-lg p-6 mt-16">
             <h2 className="text-2xl font-bold text-center mb-4">Teacher Sign Up</h2>
             {teacherError && <p className="text-red-500 text-center">{teacherError}</p>}
             <form onSubmit={createTeacher} className="space-y-4">

@@ -57,7 +57,7 @@ function CalendarApp() {
           }
 
           .dark-theme .react-calendar {
-            background-color: #2c2c2c;
+            background-color: #2a2a2a;
             color: white;
             border-radius: 4%; 
             
@@ -75,13 +75,13 @@ function CalendarApp() {
           }
 
           .dark-theme .react-calendar__tile--active {
-            background-color: brown !important;
+            background-color: green !important;
             color: white;
             border-radius: 15%; 
           }
 
           .dark-theme .react-calendar__tile--now {
-            background-color: #388e3c !important;
+            background-color: #187273 !important;
           }
 
           .dark-theme .react-calendar__tile:hover {

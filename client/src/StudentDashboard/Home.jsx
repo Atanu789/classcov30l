@@ -147,7 +147,7 @@ function Home() {
             className="bg-gray-800 rounded-lg p-5 flex flex-col justify-center items-center shadow-lg"
             style={{ ...cardStyle, background: "#2c2c2c", color: "#fff" }}
           >
-            <CgPlayListCheck className="text-5xl text-blue-500" />
+            <CgPlayListCheck className="text-5xl ml-auto text-blue-500" />
             <h2 className="text-3xl font-bold">36</h2>
             <h2>Assignment Score</h2>
           </div>
@@ -161,7 +161,7 @@ function Home() {
         <ResponsiveContainer
           width="60%"
           height="60%"
-          style={{ margin: "5px", marginLeft: "28px" }}
+          style={{ marginLeft: "20px", marginRight:"20px"}}
         >
           <div style={{ width: "100%", height: "300px" }}>
             <LineChart
@@ -181,16 +181,16 @@ function Home() {
               <Tooltip />
               <Legend />
               <Line
-                type="level"
+                type="step"
                 dataKey="Performance"
-                stroke="violet"
+                stroke="lightgreen"
                 activeDot={{ r: 8 }}
               />
             </LineChart>
           </div>
         </ResponsiveContainer>
 
-        <div className="mt--1">
+        <div className="mt--1 pl-20">
           <Calendar />
         </div>
         <div></div>
