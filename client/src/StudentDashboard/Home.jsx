@@ -14,7 +14,7 @@ function Home() {
     { name: 'Quiz', Performance: 30 },
     { name: 'Assignment', Performance: 69 },
     { name: 'ExtraCurricular', Performance: 30 },
-    { name: 'Quiz', Performance: 30 },
+    { name: 'Grade', Performance: 50 },
   ];
 
   useEffect(() => {
@@ -134,7 +134,7 @@ function Home() {
         <YAxis />
         <Tooltip />
         <Legend />
-        <Line type="linear" dataKey="Performance" stroke="violet" activeDot={{ r: 8 }} />
+        <Line type="level" dataKey="Performance" stroke="violet" activeDot={{ r: 8 }} />
       </LineChart>
     </div>
     
