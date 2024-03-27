@@ -161,12 +161,12 @@ function Home() {
         <ResponsiveContainer
           width="60%"
           height="60%"
-          style={{ marginLeft: "20px", marginRight:"20px", marginTop: "10px"}}
+          style={{ marginLeft: "130px", marginRight:"50px", marginTop: "10px"}}
         >
           <div style={{ width: "100%", height: "300px" }}>
             <LineChart
-              width={730}
-              height={400}
+              width={900}
+              height={300}
               data={data}
               margin={{
                 top: 15,
@@ -181,7 +181,7 @@ function Home() {
               <Tooltip />
               <Legend />
               <Line
-                type="step"
+                type="linear"
                 dataKey="Performance"
                 stroke="green"
                 activeDot={{ r: 8 }}
@@ -190,9 +190,7 @@ function Home() {
           </div>
         </ResponsiveContainer>
 
-        <div className="mt--1 pl-20">
-          <Calendar />
-        </div>
+       
         <div></div>
       </div>
       <div
