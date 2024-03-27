@@ -131,7 +131,7 @@ function Home() {
 
       <div style={{ display: "flex", justifyContent: "space-between" }}>
         <div
-          className="flex justify-center items-center"
+          className="flex justify-center items-center mt-10"
           style={{ marginRight: "auto" }}
         >
           <Calendar />

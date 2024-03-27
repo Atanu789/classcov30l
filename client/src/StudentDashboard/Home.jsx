@@ -161,7 +161,7 @@ function Home() {
         <ResponsiveContainer
           width="60%"
           height="60%"
-          style={{ marginLeft: "20px", marginRight:"20px"}}
+          style={{ marginLeft: "20px", marginRight:"20px", marginTop: "10px"}}
         >
           <div style={{ width: "100%", height: "300px" }}>
             <LineChart
@@ -183,7 +183,7 @@ function Home() {
               <Line
                 type="step"
                 dataKey="Performance"
-                stroke="lightgreen"
+                stroke="green"
                 activeDot={{ r: 8 }}
               />
             </LineChart>
@@ -210,10 +210,10 @@ function Home() {
           Upcoming Class
         </h1>
 
-        <table className="w-full text-white border-collapse rounded-xl border border-gray-400">
+        <table className="w-full text-white border-collapse rounded-xl border border-gray-400" >
           <thead>
             <tr>
-              <th className="p-2 border border-gray-400 ">Subject</th>
+              <th className="p-2 border border-gray-400" >Subject</th>
               <th className="p-2 border border-gray-400">Teachers Name</th>
               <th className="p-2 border border-gray-400">Date</th>
               <th className="p-2 border border-gray-400">Time</th>
@@ -223,16 +223,16 @@ function Home() {
           <tbody>
             {assignments.map((assignment) => (
               <tr key={assignment.id}>
-                <td className="p-2 border border-gray-400">
+                <td className="p-2 border border-gray-600">
                   {assignment.subject}
                 </td>
-                <td className="p-2 border border-gray-400">
+                <td className="p-2 border border-gray-600">
                   {assignment.teacherName}
                 </td>
-                <td className="p-2 border border-gray-400">
+                <td className="p-2 border border-gray-600">
                   {assignment.deadline}
                 </td>
-                <td className="p-2 border border-gray-400">Pending</td>
+                <td className="p-2 border border-gray-600">Pending</td>
                
               </tr>
             ))}
@@ -269,17 +269,17 @@ function Home() {
           <tbody>
             {assignments.map((assignment) => (
               <tr key={assignment.id}>
-                <td className="p-2 border border-gray-400">
+                <td className="p-2 border border-gray-600">
                   {assignment.subject}
                 </td>
-                <td className="p-2 border border-gray-400">
+                <td className="p-2 border border-gray-600">
                   {assignment.teacherName}
                 </td>
-                <td className="p-2 border border-gray-400">
+                <td className="p-2 border border-gray-600">
                   {assignment.deadline}
                 </td>
-                <td className="p-2 border border-gray-400">Pending</td>
-                <td className="p-2 border border-gray-400">High</td>
+                <td className="p-2 border border-gray-600">Pending</td>
+                <td className="p-2 border border-gray-600">High</td>
               </tr>
             ))}
           </tbody>
