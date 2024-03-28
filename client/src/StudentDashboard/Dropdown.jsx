@@ -14,23 +14,23 @@ export default function Example() {
     <Menu as="div" className="relative inline-block text-left">
       <div>
         <Menu.Button
-          className="inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
+          className="inline-flex w-full justify-center gap-x-1.5 rounded-md bg-#115cd4 px-3 py-2 text-sm font-semibold text-white shadow-sm ring-1 ring-inset ring-#115cd4 hover:bg-gray-800"
           onClick={() => setIsOpen(!isOpen)}
         >
           Calendar
-          <ChevronDownIcon className="-mr-1 h-5 w-5 text-gray-400" aria-hidden="true" />
+          <ChevronDownIcon className="-mr-1 h-5 w-5 text-white" aria-hidden="true" />
         </Menu.Button>
       </div>
 
       <Transition
         show={isOpen}
         as={Fragment}
-        enter="transition-transform ease-out duration-4000"
-        enterFrom="opacity-0 translate-y-[-10%]"
+        enter="transition-transform ease-out duration-5000"
+        enterFrom="opacity-0 translate-y-[-30%]"
         enterTo="opacity-100 translate-y-0"
-        leave="transition-transform ease-in duration-4000"
+        leave="transition-transform ease-in duration-5000"
         leaveFrom="opacity-100 translate-y-0"
-        leaveTo="opacity-0 translate-y-[-10%]"
+        leaveTo="opacity-0 translate-y-[-30%]"
       >
         <Menu.Items className="absolute left-0 z-10 mt-3 ">
           <div className="py-1">
