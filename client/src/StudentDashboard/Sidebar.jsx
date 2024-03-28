@@ -17,7 +17,6 @@ function Sidebar({ openSidebarToggle, OpenSidebar }) {
   const sidebarStyle = {
     backgroundColor: isHovered ? '#0605333e' : '#0605333e',
     transform: sidebarHidden ? 'translateX(-100%)' : 'none',
-    width: sidebarHidden ? '0' : '250px', // Adjust width based on sidebar state
   };
 
   const toggleHover = () => {
@@ -29,7 +28,7 @@ function Sidebar({ openSidebarToggle, OpenSidebar }) {
   };
 
   return (
-    <aside id="sidebar" className={openSidebarToggle ? 'sidebar-responsive' : ''} style={sidebarStyle} onMouseEnter={toggleHover} onMouseLeave={toggleHover}>
+    <aside id="sidebar" className={openSidebarToggle ? "sidebar-responsive" : ""} style={sidebarStyle} onMouseEnter={toggleHover} onMouseLeave={toggleHover}>
       <div className='sidebar-title flex bg-[#2826713e] '>
         <div className='sidebar-brand bg-[#06053300] rounded-full h-[70px] w-[70px] '>
           PROFILE
@@ -38,10 +37,12 @@ function Sidebar({ openSidebarToggle, OpenSidebar }) {
         <div
           className="toggle-sidebar-btn"
           onClick={toggleSidebarVisibility}
-          style={{ fontSize: '35px', cursor: 'pointer' }}
+          style={{ fontSize: '35px', cursor: 'pointer' }} // Adjust the font size as needed
         >
           <BsX />
         </div>
+
+        
       </div>
       <ul className='sidebar-list'>
         <li className='sidebar-list-item'>
@@ -51,42 +52,43 @@ function Sidebar({ openSidebarToggle, OpenSidebar }) {
           </a>
         </li>
         <li className='sidebar-list-item'>
-          <a href="/notes" className='flex'>
+          <a href="/notes"  className='flex'>
             <BsFillGrid3X3GapFill className='icon' />
             Take Notes
           </a>
         </li>
         <li className='sidebar-list-item'>
-          <a href="/quiz " className='flex'>
+          <a href="/quiz "  className='flex'>
             <BsPeopleFill className='icon' />
             Attempt Quiz
           </a>
         </li>
         <li className='sidebar-list-item'>
-          <a href="/assignment" className='flex'>
+          <a href="/assignment"  className='flex'>
             <BsListCheck className='icon' />
             Assignment
           </a>
         </li>
         <li className='sidebar-list-item'>
-          <a href="/Voca" className='flex'>
+          <a href="/Voca"  className='flex'>
             <BsGrid1X2Fill className='icon' />
             Word Challenge
           </a>
         </li>
         <li className='sidebar-list-item'>
-          <a href="/Stud" className='flex'>
+          <a href="/Stud"  className='flex'>
             <BsMenuButtonWideFill className='icon' />
             Update Profile
           </a>
         </li>
         <li className='sidebar-list-item'>
-          <a href="/settings" className='flex'>
+          <a href="/settings"  className='flex'>
             <BsFillGearFill className='icon' />
             Settings
           </a>
         </li>
       </ul>
+      
     </aside>
   );
 }
