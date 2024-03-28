@@ -7,22 +7,23 @@ import {
   BsJustify,
 } from "react-icons/bs";
 
+import Calendar from "../components/Calender";
 import Example from "./Dropdown";
 import Example1 from "./ProfileDropdown";
 
 function Header({ OpenSidebar }) {
   return (
-    <header className="header flex justify-between">
-       
-      <div className="menu-icon">
-
-        <BsJustify className="icon" onClick={OpenSidebar} />
+    <header className="header">
+      <div className="menu-icon ">
+        <BsJustify className="icon " onClick={OpenSidebar} />
       </div>
-      <Example />
+      <div className="content-start  flex content mt-7 ml-3">
+        <Example />
+        
+      </div>
 
-      <div className="flex gap-4 p-3 ">
-       
-        <div className="flex gap-5 ">
+      <div className="flex gap-4 p-3">
+        <div className="flex gap-5">
           <BsSearch className="icon mt-2" />
 
           <BsFillBellFill className="icon mt-2" />

@@ -1,38 +1,42 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 
 function NoteSection() {
   const [notes, setNotes] = useState(() => {
-    const storedNotes = localStorage.getItem('notes');
+    const storedNotes = localStorage.getItem("notes");
     return storedNotes ? JSON.parse(storedNotes) : [];
   });
-  const [newNote, setNewNote] = useState('');
+  const [newNote, setNewNote] = useState("");
   const [editingNoteId, setEditingNoteId] = useState(null);
-  const [updatedNote, setUpdatedNote] = useState('');
+  const [updatedNote, setUpdatedNote] = useState("");
 
   useEffect(() => {
-    localStorage.setItem('notes', JSON.stringify(notes));
+    localStorage.setItem("notes", JSON.stringify(notes));
   }, [notes]);
 
   const addNote = () => {
-    if (newNote.trim() !== '') {
-      const newNoteItem = { id: Date.now(), content: newNote, isImportant: false };
+    if (newNote.trim() !== "") {
+      const newNoteItem = {
+        id: Date.now(),
+        content: newNote,
+        isImportant: false,
+      };
       setNotes([...notes, newNoteItem]);
-      setNewNote('');
+      setNewNote("");
     }
   };
 
   const deleteNote = (id) => {
-    setNotes(notes.filter(note => note.id !== id));
+    setNotes(notes.filter((note) => note.id !== id));
   };
 
   const startEditing = (id) => {
     setEditingNoteId(id);
-    const noteToEdit = notes.find(note => note.id === id);
+    const noteToEdit = notes.find((note) => note.id === id);
     setUpdatedNote(noteToEdit.content);
   };
 
   const updateNote = () => {
-    const updatedNotes = notes.map(note => {
+    const updatedNotes = notes.map((note) => {
       if (note.id === editingNoteId) {
         return { ...note, content: updatedNote };
       }
@@ -40,11 +44,11 @@ function NoteSection() {
     });
     setNotes(updatedNotes);
     setEditingNoteId(null);
-    setUpdatedNote('');
+    setUpdatedNote("");
   };
 
   const toggleImportance = (id) => {
-    const updatedNotes = notes.map(note => {
+    const updatedNotes = notes.map((note) => {
       if (note.id === id) {
         return { ...note, isImportant: !note.isImportant };
       }
@@ -54,19 +58,35 @@ function NoteSection() {
   };
 
   return (
-    <div className="mx-auto mt-10 px-4 lg:px-0 " style={{ height: '600px', width: '1200px' }}>
+    <div
+      className="mx-auto mt-10 px-4 lg:px-0 "
+      style={{ height: "600px", width: "1200px" }}
+    >
       <h2 className="text-3xl font-bold mb-6 dark:text-white">Note Section</h2>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <div>
-          <div className="bg-green-900 p-6 rounded-lg" style={{ backgroundColor: '#016163', boxShadow: "rgba(0, 0, 0, 0.4) 0px 2px 14px, rgba(0, 0, 0, 0.3) 0px 13px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset" }}>
+          <div
+            className="bg-green-900 p-6 rounded-lg"
+            style={{
+              backgroundColor: "#016163",
+              boxShadow:
+                "rgba(0, 0, 0, 0.4) 0px 2px 14px, rgba(0, 0, 0, 0.3) 0px 13px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset",
+            }}
+          >
             <h3 className="text-xl font-semibold mb-4">Add New Note</h3>
             <textarea
               type="text"
-              placeholder="Enter new note"
               value={newNote}
               onChange={(e) => setNewNote(e.target.value)}
-              className="w-full border border-gray-300 p-2 rounded focus:outline-none text-black dark:border-gray-600 dark:bg-gray-800 dark:text-white" style={{ height: '400px', width: '545px' }}
+              className="w-full border border-gray-300 p-2 rounded focus:outline-none text-black dark:border-gray-600 dark:bg-gray-800 dark:text-white"
+              style={{
+                height: "400px",
+                width: "545px",
+                wordWrap: "break-word",
+                overflowWrap: "break-word",
+              }}
             />
+
             <button
               onClick={addNote}
               className="mt-4 bg-green-500 text-black px-4 py-2 rounded hover:bg-green-600 focus:outline-none"
@@ -75,14 +95,24 @@ function NoteSection() {
             </button>
           </div>
         </div>
-        <div style={{ boxShadow: "rgba(0, 0, 0, 0.4) 0px 2px 14px, rgba(0, 0, 0, 0.3) 0px 13px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset" }}>
+        <div
+          style={{
+            boxShadow:
+              "rgba(0, 0, 0, 0.4) 0px 2px 14px, rgba(0, 0, 0, 0.3) 0px 13px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset",
+          }}
+        >
           <div className="p-6 rounded-lg dark:bg-gray-700 dark:text-gray-200">
             <h3 className="text-xl font-semibold mb-4">Your Notes</h3>
             <ul>
-            {notes.map(note => (
-              <li key={note.id} className={`mb-4 ${note.isImportant ? 'border-2 border-yellow-500 rounded' : 'border border-gray-500 rounded'}`}>
-
-
+              {notes.map((note) => (
+                <li
+                  key={note.id}
+                  className={`mb-4 ${
+                    note.isImportant
+                      ? "border-2 border-yellow-500 rounded"
+                      : "border border-gray-500 rounded"
+                  }`}
+                >
                   {editingNoteId === note.id ? (
                     <div>
                       <textarea
@@ -99,8 +129,8 @@ function NoteSection() {
                       </button>
                     </div>
                   ) : (
-                    <div className="flex items-center justify-between text-white">
-                      <span>{note.content}</span>
+                    <article className="flex items-center text-white">
+                      <p className="break-all">{note.content}</p>
                       <div>
                         <button
                           onClick={() => startEditing(note.id)}
@@ -114,20 +144,20 @@ function NoteSection() {
                         >
                           Delete
                         </button>
-                        
-
                       </div>
-                      
-                    </div>
+                    </article>
                   )}
                   <button
-                      onClick={() => toggleImportance(note.id)}
-                      className={`bg-gray-500 text-white px-3 py-1 rounded hover:bg-gray-600 focus:outline-none ${note.isImportant ? 'bg-yellow-700 font-bold border border-yellow-500' : ''}`}
-                      style={{ minWidth: '30px' }} 
-                    >
-                      {note.isImportant ? '⭐️' : '☆'}
-                    </button>
-
+                    onClick={() => toggleImportance(note.id)}
+                    className={`bg-gray-500 text-white px-3 py-1 rounded hover:bg-gray-600 focus:outline-none ${
+                      note.isImportant
+                        ? "bg-yellow-700 font-bold border border-yellow-500"
+                        : ""
+                    }`}
+                    style={{ minWidth: "30px" }}
+                  >
+                    {note.isImportant ? "⭐️" : "☆"}
+                  </button>
                 </li>
               ))}
             </ul>

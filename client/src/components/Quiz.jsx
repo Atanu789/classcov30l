@@ -1,8 +1,8 @@
 import { useRef, useState, useEffect, createRef } from 'react';
 import './Quiz.css';
-import correctSound from "../assets/7_Crore.mp3";
-import wrongSound from "../assets/Ayein.mp3";
-import bgmSound from "../assets/husn.mp3"; 
+import correctSound from "../assets/correct.mp3";
+import wrongSound from "../assets/wrong.mp3";
+import bgmSound from "../assets/bgm.mp3"; 
 
 function Quiz() {
   const [quizData, setQuizData] = useState([]);
