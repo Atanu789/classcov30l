@@ -13,10 +13,11 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts";
-import Calendar from "../components/Calender";
+import "./Home.css"; 
 
 function Home() {
   const [assignments, setAssignments] = useState([]);
+  const [isLoaded, setIsLoaded] = useState(false);
 
   const data = [
     { name: "Attendance", Performance: 50 },
@@ -32,6 +33,7 @@ function Home() {
       .then((data) => {
         if (Array.isArray(data.data)) {
           setAssignments(data.data);
+          setIsLoaded(true); // Set isLoaded to true when data is fetched
         } else {
           console.error("API response is not an array:", data);
         }
@@ -73,7 +75,7 @@ function Home() {
 
   return (
     <main
-      className="main-container dark-theme"
+      className={`main-container dark-theme ${isLoaded ? "fade-in" : ""}`}
       style={{ backgroundColor: "#0605333e" }}
     >
       {/* Main title */}
@@ -220,7 +222,7 @@ function Home() {
           </thead>
           <tbody>
             {assignments.map((assignment) => (
-              <tr key={assignment.id}>
+              <tr key={assignment.id} className="hover:bg-gray-900">
                 <td className="p-2 border border-gray-600">
                   {assignment.subject}
                 </td>
@@ -240,49 +242,54 @@ function Home() {
 
 
       <div
-        className="bg-[#286f6f56] rounded-xl dark-card shadow-xl p-4 pt-6 mt-6 pl-14 pr-14 "
-        style={{
-          boxShadow:
-            "rgba(0, 0, 0, 0.4) 0px 2px 14px, rgba(0, 0, 0, 0.3) 0px 13px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset",
-        }}
-        hoverStyle={{
-          boxShadow:
-            "rgba(0, 0, 0, 0.8) 0px 2px 20px, rgba(0, 0, 0, 0.6) 0px 15px 15px -7px, rgba(0, 0, 0, 0.4) 0px -3px 0px inset",
-        }}
-      >
-        <h1 className="text-center text-3xl font-bold text-white pb-7">
-          Pending Assignments
-        </h1>
+  className="bg-[#286f6f56] rounded-xl dark-card shadow-xl p-4 pt-6 mt-6 pl-14 pr-14"
+  style={{
+    boxShadow:
+      "rgba(0, 0, 0, 0.4) 0px 2px 14px, rgba(0, 0, 0, 0.3) 0px 13px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset",
+  }}
+  hoverStyle={{
+    boxShadow:
+      "rgba(0, 0, 0, 0.8) 0px 2px 20px, rgba(0, 0, 0, 0.6) 0px 15px 15px -7px, rgba(0, 0, 0, 0.4) 0px -3px 0px inset",
+  }}
+>
+  <h1 className="text-center text-3xl font-bold text-white pb-7">
+    Pending Assignments
+  </h1>
 
-        <table className="w-full text-white border-collapse rounded-xl border border-gray-400">
-          <thead>
-            <tr>
-              <th className="p-2 border border-gray-400 ">Subject</th>
-              <th className="p-2 border border-gray-400">Teachers Name</th>
-              <th className="p-2 border border-gray-400">Deadline</th>
-              <th className="p-2 border border-gray-400">Status</th>
-              <th className="p-2 border border-gray-400">Priority</th>
-            </tr>
-          </thead>
-          <tbody>
-            {assignments.map((assignment) => (
-              <tr key={assignment.id}>
-                <td className="p-2 border border-gray-600">
-                  {assignment.subject}
-                </td>
-                <td className="p-2 border border-gray-600">
-                  {assignment.teacherName}
-                </td>
-                <td className="p-2 border border-gray-600">
-                  {assignment.deadline}
-                </td>
-                <td className="p-2 border border-gray-600">Pending</td>
-                <td className="p-2 border border-gray-600">High</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+  <table className="w-full text-white border-collapse rounded-xl border border-gray-400">
+    <thead>
+      <tr>
+        <th className="p-2 border border-gray-400">Subject</th>
+        <th className="p-2 border border-gray-400">Teachers Name</th>
+        <th className="p-2 border border-gray-400">Deadline</th>
+        <th className="p-2 border border-gray-400">Status</th>
+        <th className="p-2 border border-gray-400">Priority</th>
+      </tr>
+    </thead>
+    <tbody>
+      {assignments.map((assignment) => (
+        <tr key={assignment.id} className="hover:bg-gray-900">
+          <td className="p-2 border border-gray-600">
+            {assignment.subject}
+          </td>
+          <td className="p-2 border border-gray-600">
+            {assignment.teacherName}
+          </td>
+          <td className="p-2 border border-gray-600">{assignment.deadline}</td>
+          <td className="p-2 border border-gray-600">Pending</td>
+          <td className="p-2 border border-gray-600">High</td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>
+
+
+<div style={{ height: '50px', width: '300px' }}>
+
+</div>
+
+
 
       
     </main>
