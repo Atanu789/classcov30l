@@ -7,9 +7,9 @@ import {
   BsMenuButtonWideFill,
   BsFillGearFill,
 } from 'react-icons/bs';
-import '../StudentApp.css';
+import '../TeacherApp.css'; // Assuming you have a separate CSS file for teacher styling
 
-function Sidebar({ openSidebarToggle, OpenSidebar }) {
+function TeacherSidebar({ openSidebarToggle, OpenSidebar }) {
   const [isHovered, setIsHovered] = useState(false);
 
   const sidebarStyle = {
@@ -43,7 +43,7 @@ function Sidebar({ openSidebarToggle, OpenSidebar }) {
         </li>
         <li className='sidebar-list-item'>
           <a href="uploadAssign" className='flex'> {/* Updated href */}
-            <BsFillGrid3X3GapFill className='icon' />
+            <BsListCheck className='icon' />
             Upload Assignments
           </a>
         </li>
@@ -55,13 +55,13 @@ function Sidebar({ openSidebarToggle, OpenSidebar }) {
         </li>
         <li className='sidebar-list-item'>
           <a href="QRCodegenerator" className='flex'> {/* Updated href */}
-            <BsListCheck className='icon' />
+            <BsMenuButtonWideFill className='icon' />
             Track Attendance
           </a>
         </li>
         <li className='sidebar-list-item'>
           <a href="" className='flex'> {/* Updated href */}
-            <BsMenuButtonWideFill className='icon' />
+            <BsFillGearFill className='icon' />
             Update Profile
           </a>
         </li>
@@ -76,4 +76,4 @@ function Sidebar({ openSidebarToggle, OpenSidebar }) {
   );
 }
 
-export default Sidebar;
+export default TeacherSidebar;

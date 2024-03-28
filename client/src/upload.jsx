@@ -11,6 +11,7 @@ export default function Component() {
   const [studentUsername, setStudentUsername] = useState("");
   const [studentPassword, setStudentPassword] = useState("");
   const [studentInst, setStudentInst] = useState("");
+  const[studentImg,setStudentImg]=useState("");
   const [studentError, setStudentError] = useState("");
 
   const [teacherFullname, setTeacherFullname] = useState("");
@@ -19,6 +20,7 @@ export default function Component() {
   const [teacherUsername, setTeacherUsername] = useState("");
   const [teacherPassword, setTeacherPassword] = useState("");
   const [teacherInst, setTeacherInst] = useState("");
+  const[teacherImg,setTeacherImg]=useState("");
   const [teacherError, setTeacherError] = useState("");
 
   const createStudent = async (event) => {
@@ -123,6 +125,14 @@ export default function Component() {
                 onChange={(e) => setStudentInst(e.target.value)}
                 required
               />
+               <Input type="file"
+                label="Select Your Profile Picture"
+                placeholder="Uplode a Image"
+                value={studentImg}
+                onChange={(e) => setStudentImg(e.target.value)}
+              
+              />
+        
               <div className="flex justify-center">
                 <Button type="submit" info="students" className="btn-dark">Create Account</Button>
               </div>
@@ -179,6 +189,13 @@ export default function Component() {
                 value={teacherInst}
                 onChange={(e) => setTeacherInst(e.target.value)}
                 required
+              />
+               <Input type="file"
+                label="Select Your Profile Picture"
+                placeholder="Uplode a Image"
+                value={teacherImg}
+                onChange={(e) => setTeacherImg(e.target.value)}
+              
               />
               <div className="flex justify-center">
                 <Button type="submit" info="teachers" className="btn-dark">Create Account</Button>
