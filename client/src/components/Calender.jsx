@@ -25,13 +25,13 @@ function CalendarApp() {
 
   return (
     <div className='app' style={{ backgroundColor: '#1f1f1f' }}>
-       <div style={{ backgroundColor: '#12f8f12f' ,boxShadow: 'rgba(0, 0, 0, 0.4) 0px 2px 14px, rgba(0, 0, 0, 0.3) 0px 13px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset'}} className='rounded-lg p-5 flex flex-col justify-center items-center shadow-lg'>
+       <div style={{ backgroundColor:'#30345d' ,boxShadow: 'rgba(0, 0, 0, 0.4) 0px 2px 14px, rgba(0, 0, 0, 0.3) 0px 13px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset'}} className='rounded-lg p-5 flex flex-col justify-center items-center shadow-lg'>
         <Calendar
           onChange={setDate}
           onMouseOver={(e) => setHoveredDate(e.date)}
           value={date}
           calendarType='US'
-          className='custom-calendar dark-theme' // Add dark-theme class
+          className='custom-calendar dark-theme bg-[#2a2a2a]' // Add dark-theme class
           tileClassName={tileClassName}
           style={{ width: '200px', height: '200px'  }} // Adjust size here
         />
@@ -94,4 +94,4 @@ function CalendarApp() {
   );
 }
 
-export default CalendarApp;
+export default CalendarApp;
