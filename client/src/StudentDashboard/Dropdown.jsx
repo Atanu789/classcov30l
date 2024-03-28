@@ -14,7 +14,7 @@ export default function Example() {
     <Menu as="div" className="relative inline-block text-left">
       <div>
         <Menu.Button
-          className="inline-flex w-full justify-center gap-x-1.5 rounded-md bg-#115cd4 px-3 py-2 text-sm font-semibold text-white shadow-sm ring-1 ring-inset ring-#115cd4 hover:bg-gray-800"
+          className="inline-flex w-full justify-center gap-x-1.5 rounded-md bg-#115cd4 px-3 py-2  text-sm font-semibold text-white shadow-sm ring-1 ring-inset ring-#115cd4 hover:bg-gray-800 ml-0"
           onClick={() => setIsOpen(!isOpen)}
         >
           Calendar
@@ -32,7 +32,7 @@ export default function Example() {
         leaveFrom="opacity-100 translate-y-0"
         leaveTo="opacity-0 translate-y-[-30%]"
       >
-        <Menu.Items className="absolute left-0 z-10 mt-3 ">
+        <Menu.Items className="absolute left-0 z-10 mt-6">
           <div className="py-1">
             <Menu.Item>
               <CalendarApp />
