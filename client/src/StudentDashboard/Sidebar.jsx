@@ -10,6 +10,8 @@ import {
 } from 'react-icons/bs';
 import '../StudentApp.css';
 
+import './Side.css'; // Import the CSS file
+
 function Sidebar({ openSidebarToggle, OpenSidebar }) {
   const [isHovered, setIsHovered] = useState(false);
   const [sidebarHidden, setSidebarHidden] = useState(false);

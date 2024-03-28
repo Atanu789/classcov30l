@@ -1,24 +1,23 @@
-import { useState } from 'react';
-import axios from 'axios';
+import { useState, useEffect } from 'react';
 
 function NoteSection() {
-  const [notes, setNotes] = useState([]);
+  const [notes, setNotes] = useState(() => {
+    const storedNotes = localStorage.getItem('notes');
+    return storedNotes ? JSON.parse(storedNotes) : [];
+  });
   const [newNote, setNewNote] = useState('');
   const [editingNoteId, setEditingNoteId] = useState(null);
   const [updatedNote, setUpdatedNote] = useState('');
 
+  useEffect(() => {
+    localStorage.setItem('notes', JSON.stringify(notes));
+  }, [notes]);
+
   const addNote = () => {
     if (newNote.trim() !== '') {
-      setNotes([...notes, { id: Date.now(), content: newNote }]);
+      const newNoteItem = { id: Date.now(), content: newNote, isImportant: false };
+      setNotes([...notes, newNoteItem]);
       setNewNote('');
-
-      axios.post('http://localhost:8000/api/v1/students/notes', { content: newNote })
-        .then(response => {
-          console.log('Note added:', response.data);
-        })
-        .catch(error => {
-          console.error('Error adding note:', error);
-        });
     }
   };
 
@@ -44,19 +43,29 @@ function NoteSection() {
     setUpdatedNote('');
   };
 
+  const toggleImportance = (id) => {
+    const updatedNotes = notes.map(note => {
+      if (note.id === id) {
+        return { ...note, isImportant: !note.isImportant };
+      }
+      return note;
+    });
+    setNotes(updatedNotes);
+  };
+
   return (
-    <div className="mx-auto mt-10 px-4 lg:px-0 dark:bg-gray-800">
+    <div className="mx-auto mt-10 px-4 lg:px-0 " style={{ height: '600px', width: '1200px' }}>
       <h2 className="text-3xl font-bold mb-6 dark:text-white">Note Section</h2>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <div>
-        <div className="bg-green-900 p-6 rounded-lg" style={{ backgroundColor: '#0A7E80' }}>
+          <div className="bg-green-900 p-6 rounded-lg" style={{ backgroundColor: '#016163', boxShadow: "rgba(0, 0, 0, 0.4) 0px 2px 14px, rgba(0, 0, 0, 0.3) 0px 13px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset" }}>
             <h3 className="text-xl font-semibold mb-4">Add New Note</h3>
             <textarea
               type="text"
               placeholder="Enter new note"
               value={newNote}
               onChange={(e) => setNewNote(e.target.value)}
-              className="w-full border border-gray-300 p-2 rounded focus:outline-none text-black dark:border-gray-600 dark:bg-gray-800 dark:text-white"
+              className="w-full border border-gray-300 p-2 rounded focus:outline-none text-black dark:border-gray-600 dark:bg-gray-800 dark:text-white" style={{ height: '400px', width: '545px' }}
             />
             <button
               onClick={addNote}
@@ -66,12 +75,14 @@ function NoteSection() {
             </button>
           </div>
         </div>
-        <div>
-          <div className="bg-blue-900 p-6 rounded-lg dark:bg-gray-700 dark:text-gray-200">
+        <div style={{ boxShadow: "rgba(0, 0, 0, 0.4) 0px 2px 14px, rgba(0, 0, 0, 0.3) 0px 13px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset" }}>
+          <div className="p-6 rounded-lg dark:bg-gray-700 dark:text-gray-200">
             <h3 className="text-xl font-semibold mb-4">Your Notes</h3>
             <ul>
-              {notes.map(note => (
-                <li key={note.id} className="mb-4">
+            {notes.map(note => (
+              <li key={note.id} className={`mb-4 ${note.isImportant ? 'border-2 border-yellow-500 rounded' : 'border border-gray-500 rounded'}`}>
+
+
                   {editingNoteId === note.id ? (
                     <div>
                       <textarea
@@ -93,19 +104,30 @@ function NoteSection() {
                       <div>
                         <button
                           onClick={() => startEditing(note.id)}
-                          className="bg-yellow-500 text-black px-3 py-1 rounded mr-2 hover:bg-yellow-600 focus:outline-none"
+                          className="bg-orange-400 text-black px-3 py-1 rounded mr-5 mt-5 hover:bg-yellow-600 focus:outline-none"
                         >
                           Edit
                         </button>
                         <button
                           onClick={() => deleteNote(note.id)}
-                          className="bg-red-600 text-white px-3 py-1 rounded hover:bg-red-600 focus:outline-none"
+                          className="bg-red-600 text-white px-3 py-1 rounded mr-5 mt-8 hover:bg-red-600 focus:outline-none"
                         >
                           Delete
                         </button>
+                        
+
                       </div>
+                      
                     </div>
                   )}
+                  <button
+                      onClick={() => toggleImportance(note.id)}
+                      className={`bg-gray-500 text-white px-3 py-1 rounded hover:bg-gray-600 focus:outline-none ${note.isImportant ? 'bg-yellow-700 font-bold border border-yellow-500' : ''}`}
+                      style={{ minWidth: '30px' }} 
+                    >
+                      {note.isImportant ? '⭐️' : '☆'}
+                    </button>
+
                 </li>
               ))}
             </ul>
