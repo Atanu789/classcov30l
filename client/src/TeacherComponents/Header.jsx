@@ -1,19 +1,34 @@
-import React from 'react';
-import { BsFillBellFill, BsFillEnvelopeFill, BsPersonCircle, BsSearch, BsJustify } from 'react-icons/bs';
+import React, { useState } from "react";
+import {
+  BsFillBellFill,
+  BsFillEnvelopeFill,
+  BsPersonCircle,
+  BsSearch,
+  BsJustify,
+} from "react-icons/bs";
+
+import Calendar from "../components/Calender";
+import Example from "./Dropdown";
 
 function Header({ OpenSidebar }) {
   return (
-    <header className='header flex justify-between items-center z-50'>
-      <div className='menu-icon'>
-        <BsJustify className='icon' onClick={OpenSidebar} />
-      </div>
+    <header className="header flex justify-end">
       
-      <div className='ml-[1050px] flex gap-7'>
-        <BsSearch className='icon' />
-        <BsFillBellFill className='icon' />
-        <BsFillEnvelopeFill className='icon' />
-        <BsPersonCircle className='icon' />
+      <div className="menu-icon">
+        <BsJustify className="icon" onClick={OpenSidebar} />
       </div>
+
+     
+       
+        <div className="flex gap-5 justify-end">
+          <BsSearch className="icon" />
+
+          <BsFillBellFill className="icon" />
+          <BsFillEnvelopeFill className="icon" />
+          <Example />
+        </div>
+   
+     
     </header>
   );
 }

@@ -9,14 +9,17 @@ import {
 
 import Calendar from "../components/Calender";
 import Example from "./Dropdown";
+import Example1 from "./ProfileDropdown";
 
 function Header({ OpenSidebar }) {
   return (
     <header className="header flex justify-between">
-       <Example />
+       
       <div className="menu-icon">
+
         <BsJustify className="icon" onClick={OpenSidebar} />
       </div>
+      <Example />
 
       <div className="flex gap-4 p-3">
        
@@ -25,7 +28,7 @@ function Header({ OpenSidebar }) {
 
           <BsFillBellFill className="icon" />
           <BsFillEnvelopeFill className="icon" />
-          <BsPersonCircle className="icon" />
+          <Example1 />
         </div>
       </div>
     </header>
